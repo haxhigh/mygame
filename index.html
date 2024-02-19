@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun maze game!</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/three@<version>/build/three.module.js"></script>
+
+    <script src="./timer.js"></script>
+    <script src="./score.js"></script>
+</head>
+<body>
+    <a-scene background="color: #FAFAFA" inspector-plugin-recast>
+        <a-assets>
+            <a-asset-item id="mazemap" src="./models/mazemap.glb"></a-asset-item>
+            <a-assets-item id="spider" src="./models/spider.glb"></a-assets-item>
+            <a-assets-item id="solider" src="./models/solider.glb"></a-assets-item>
+            <a-assets-item id="goldcoin" src="./models/Copy of gold coin.glb"></a-assets-item>
+        </a-assets>
+
+        <a-entity id="camera" camera look-controls wasd-controls position="0 1.6 0">
+            <!--TIMER-->
+            <a-entity
+                position="-4.5 4 -5"
+                text="value: TIMER REMAINING: ; color: black; align: center; width: 4"
+            ></a-entity>
+            <a-entity
+                id="timer"
+                position="-3 4 -5"
+                text="value: 00:00 ; color: black; align: center; width: 4"
+                timer
+            ></a-entity>
+            <!--SCORE-->
+            <a-entity
+            id="score"
+            position="0 4 -5"
+            text="value:0;color:black;align:center;width:10"
+            ></a-entity>
+            <a-entity id="solider" gltf-model="#solider" position="0 -3 -3" scale="0.05 0.05 0.05" rotation="0 180 0" score></a-entity>
+        </a-entity>
+        
+        <a-entity id="coin" gltf-model="#goldcoin" position="0 0 0" scale="0.01 0.01 0.01"></a-entity>
+
+        <a-entity id="maze" gltf-model="#mazemap" position="0 -20 0" rotation="0 0 0"></a-entity>
+        <a-entity id="spider" gltf-model="#spider" position="0 -20 0" scale="0.25 1 0.25"></a-entity>
+
+    </a-scene>
+</body>
+</html>
